@@ -1,10 +1,10 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>18.0.0</Version>
+    <Version>17.0.0</Version>
     <PackageId>Umbraco.Community.MemberCache</PackageId>
     <Authors>skttl</Authors>
     <Description>Published member caching with ModelsBuilder support, automatic Member Picker conversion and distributed invalidation for Umbraco.</Description>
@@ -21,7 +21,7 @@
 
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Umbraco.Cms.Core" Version="[18.0.0,19.0.0)" />
+    <PackageReference Include="Umbraco.Cms.Core" Version="[17.0.0,18.0.0)" />
     <PackageReference Include="Microsoft.Extensions.Caching.Hybrid" Version="10.0.0" />
     <InternalsVisibleTo Include="Umbraco.Community.MemberCache.Tests" />
     <None Include="../../icon.png" Pack="true" PackagePath="/" />

@@ -10,7 +10,7 @@ Published member lookups with ModelsBuilder support, automatic Member Picker int
 | 17.x | `[17.0.0,18.0.0)` | .NET 10 | `v17/main` |
 
 ```sh
-dotnet add package Umbraco.Community.MemberCache --version 18.0.0
+dotnet add package Umbraco.Community.MemberCache --version 17.0.0
 ```
 
 Umbraco discovers the package composer automatically. No manual registration is needed. Existing Member Picker template calls use the shared cache:

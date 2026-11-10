@@ -22,14 +22,14 @@ dotnet run --project demo/Umbraco.Community.MemberCache.TestSite
 
 Complete the local Umbraco installer when the demo first opens. Keep local passwords in user secrets or ignored development settings. Databases, logs and media are ignored.
 
-The demo was generated with SDK 10.0.401 and the official `Umbraco.Templates` 18.0.0 template, then given a project reference to the package. The generated site targets `net10.0` and CMS 18.0.0. Its generation command was:
+The demo was generated with SDK 10.0.401 and the official `Umbraco.Templates` 17.0.0 template, then given a project reference to the package. The generated site targets `net10.0` and CMS 17.0.0. Its generation command was:
 
 ```sh
-dotnet new install Umbraco.Templates::18.0.0
-dotnet new umbraco -n Umbraco.Community.MemberCache.TestSite -o demo/Umbraco.Community.MemberCache.TestSite --package-management PerProject --development-database-type SQLite --models-mode InMemoryAuto --no-restore
+dotnet new install Umbraco.Templates::17.0.0
+dotnet new umbraco -n Umbraco.Community.MemberCache.TestSite -o demo/Umbraco.Community.MemberCache.TestSite --development-database-type SQLite --no-restore
 ```
 
-The demo also references `Umbraco.Cms.DevelopmentMode.Backoffice` 18.0.0 for the generated InMemoryAuto models mode. Installation checks are recorded in [verification](docs/verification.md).
+The demo also references `Umbraco.Cms.DevelopmentMode.Backoffice` 17.0.0 for the generated InMemoryAuto models mode. Installation checks are recorded in [verification](docs/verification.md).
 
 After installing the demo database, create the example member type, member, Block List and Member Picker page with:
 

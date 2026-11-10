@@ -14,9 +14,8 @@ public sealed class CachedMemberPickerValueConverter(
     IPublishedMemberLookup lookup,
     IIdKeyMap idKeyMap,
     IMemberService memberService,
-    IPublishedMemberCache memberCache,
-    IExternalMemberService externalMemberService)
-    : MemberPickerValueConverter(memberService, memberCache, externalMemberService)
+    IPublishedMemberCache memberCache)
+    : MemberPickerValueConverter(memberService, memberCache)
 {
     /// <inheritdoc />
     public override PropertyCacheLevel GetPropertyCacheLevel(IPublishedPropertyType propertyType) => PropertyCacheLevel.None;

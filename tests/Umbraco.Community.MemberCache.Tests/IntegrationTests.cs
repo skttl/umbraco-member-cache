@@ -5,7 +5,6 @@ using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Cms.Core.PropertyEditors;
 using Umbraco.Cms.Core.PublishedCache;
 using Umbraco.Cms.Core.Services;
-using Umbraco.Cms.Core.Security;
 using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,7 +19,6 @@ public class IntegrationTests
     private readonly IMemberService _members = Substitute.For<IMemberService>();
     private readonly IPublishedMemberCache _published = Substitute.For<IPublishedMemberCache>();
     private readonly IIdKeyMap _ids = Substitute.For<IIdKeyMap>();
-    private readonly IExternalMemberService _external = Substitute.For<IExternalMemberService>();
     private readonly IPublishedElement _owner = Substitute.For<IPublishedElement>();
     private readonly IPublishedPropertyType _property = Substitute.For<IPublishedPropertyType>();
     public IntegrationTests()
@@ -28,9 +26,8 @@ public class IntegrationTests
         _lookup.GetByIdAsync(Arg.Any<int>()).Returns((IPublishedContent?)null);
         _members.GetById(Arg.Any<int>()).Returns((IMember?)null);
         _members.GetById(Arg.Any<Guid>()).Returns((IMember?)null);
-        _external.GetByKeyAsync(Arg.Any<Guid>()).Returns((ExternalMemberIdentity?)null);
     }
-    private CachedMemberPickerValueConverter Converter => new(_lookup, _ids, _members, _published, _external);
+    private CachedMemberPickerValueConverter Converter => new(_lookup, _ids, _members, _published);
     private object? Convert(object? value) => Converter.ConvertIntermediateToObject(_owner, _property, PropertyCacheLevel.None, value, false);
 
     [Fact]
@@ -61,23 +58,13 @@ public class IntegrationTests
     public void Missing_numeric_member_has_core_null_semantics() => Assert.Null(Convert(42));
 
     [Fact]
-    public void Missing_member_udi_uses_core_external_fallback_and_source_fallback()
+    public void Missing_member_udi_preserves_core_null_semantics()
     {
         var key = Guid.NewGuid();
         var udi = new GuidUdi(Constants.UdiEntityType.Member, key);
-        Assert.Same(udi, Convert(udi));
-        _external.Received(1).GetByKeyAsync(key);
+        Assert.Null(Convert(udi));
     }
 
-    [Fact]
-    public void External_member_udi_preserves_core_published_external_result()
-    {
-        var key = Guid.NewGuid();
-        _external.GetByKeyAsync(key).Returns(new ExternalMemberIdentity { Id = 9, Key = key, Name = "External" });
-        var result = Assert.IsAssignableFrom<IPublishedContent>(Convert(new GuidUdi(Constants.UdiEntityType.Member, key)));
-        Assert.Equal(key, result.Key);
-        Assert.Equal("External", result.Name);
-    }
 
     [Fact]
     public void Composer_replaces_only_core_default_and_project_converter_wins()
@@ -94,7 +81,6 @@ public class IntegrationTests
         services.AddSingleton(_ids);
         services.AddSingleton(_members);
         services.AddSingleton(_published);
-        services.AddSingleton(_external);
         collection.RegisterWith(services);
         using var provider = services.BuildServiceProvider();
         var converters = provider.GetRequiredService<PropertyValueConverterCollection>();
