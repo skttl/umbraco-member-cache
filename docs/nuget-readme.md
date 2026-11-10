@@ -93,4 +93,4 @@ Members can contain personal data, including username, email and custom properti
 
 [Repository and demo](https://github.com/skttl/umbraco-member-cache) · [Verification record](https://github.com/skttl/umbraco-member-cache/blob/main/docs/verification.md) · [Report an issue](https://github.com/skttl/umbraco-member-cache/issues)
 
-Benchmark images document an older prototype, not the finished package. Package performance must be remeasured before making equivalent claims.
+The [finished-package benchmark](https://github.com/skttl/umbraco-member-cache/blob/main/docs/benchmarks/package/README.md) measures warm repeated Member Picker reads on real published documents. Both the 17.0.1 and 18.0.0 comparisons improve in this local test; core's already cached 17.0.0 picker is faster in that specific scenario. These numbers do not describe cold cache, full page rendering or production throughput.

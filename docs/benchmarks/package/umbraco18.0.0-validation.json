@@ -1,0 +1,33 @@
+{
+  "Cms": "18.0.0.0",
+  "Package": "18.0.0",
+  "CoreConverter": "CoreFixtureMemberPickerValueConverter",
+  "CachedConverter": "Umbraco.Community.MemberCache.CachedMemberPickerValueConverter",
+  "CorePropertyCacheLevel": "Snapshot",
+  "CachedPropertyCacheLevel": "None",
+  "DocumentOwner": "PackageBenchmark.Generated.PackageBenchmarkDocument",
+  "DocumentId": 1061,
+  "MemberId": 1059,
+  "MemberKey": "9aa91282-9a66-41c8-a2e2-95af84c619cd",
+  "CoreMemberModel": "Umbraco.Cms.Infrastructure.HybridCache.PublishedMember",
+  "PackageMemberModel": "PackageBenchmark.Generated.PackageBenchmarkMember",
+  "HybridCache": "Microsoft.Extensions.Caching.Hybrid.Internal.DefaultHybridCache",
+  "DistributedCache": "Microsoft.Extensions.Caching.Distributed.MemoryDistributedCache",
+  "MaxModels": 10000,
+  "LocalCacheExpiration": "1.00:00:00",
+  "CacheExpiration": "365.00:00:00",
+  "SeedEnabled": false,
+  "Passed": 10,
+  "Checks": [
+    "MemberSaved",
+    "DocumentTypeCreated",
+    "RealDocumentSavedAndPublished",
+    "BothNormalValueCallsPreserveMemberIdentity",
+    "BothNormalValueCallsReadIdenticalProfileTitle",
+    "ActualPackageReturnsGeneratedMemberModel",
+    "ActualPublicLookupAndPickerShareCanonicalWarmModel",
+    "SamePickerDatatypeAndRawSource",
+    "ActualPipelineCacheLevelIsNone",
+    "ActualPipelineSelectsCoreControlAndAutomaticPackageConverter"
+  ]
+}
