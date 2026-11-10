@@ -19,6 +19,7 @@ demo/**/appsettings-schema.Umbraco.Community.MemberCache.json
 *.db-wal
 *.sqlite*
 *.log
+!docs/benchmarks/package/*.log
 node_modules/
 .env
 .env.*

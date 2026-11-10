@@ -38,10 +38,10 @@
 
 **Interfaces:** Public Task-based lookup contract from design. `MemberCacheInvalidator` exposes `Task InvalidateMembersAsync(IEnumerable<int>, CancellationToken)`, `Task InvalidateAllAsync(CancellationToken)`, and `void ClearModels()` for adapters. Member data loading goes through an internal seam for deterministic tests. Registered service is singleton and resolves scoped Umbraco services in scopes where needed. Options bind `Umbraco:Community:MemberCache`.
 
-- [ ] Pin tests for lookup identity, username semantics, missing/duplicate/ordered batch behavior, typed snapshot roundtrip and bounded cache eviction.
-- [ ] Implement public snapshot rehydration and both cache tiers, preserving source errors and cancellation.
-- [ ] Test two independent L1/model caches sharing one L2: save/rename/delete/full invalidation and overlapping factories cannot expose stale entries after a refresher is processed.
-- [ ] Verify focused tests and record concurrency/consistency limitations explicitly.
+- [x] Pin tests for lookup identity, username semantics, missing/duplicate/ordered batch behavior, typed snapshot roundtrip and bounded cache eviction.
+- [x] Implement public snapshot rehydration and both cache tiers, preserving source errors and cancellation.
+- [x] Test two independent L1/model caches sharing one L2: save/rename/delete/full invalidation and overlapping factories cannot expose stale entries after a refresher is processed.
+- [x] Verify focused tests and record concurrency/consistency limitations explicitly.
 
 ## Task 2: Umbraco adapters, converter, seeding and focused tests
 
@@ -49,26 +49,26 @@
 
 **Interfaces:** Consumes task 1 lookup and invalidator. Registers composer, configuration validation, scoped seed providers and handlers for Member/ContentType/DataType/Content/Media refresher notifications. Public `IMemberSeedProvider.GetMemberIdsAsync(CancellationToken)` returns IAsyncEnumerable<int>.
 
-- [ ] Write focused adapter/converter/seed tests, including disabled providers, fail-fast, custom scoped providers, deduplication and cancellation.
-- [ ] Implement automatic converter replacement while preserving custom converters, legacy ID/member UDI and 18 external fallback; Delivery API stays unsupported.
-- [ ] Implement distributed refresher handlers and schema/model-factory/content/media model retirement.
-- [ ] Implement startup seeding before readiness only in suitable installed runtime states, raw data only, no L0 warmup.
-- [ ] Verify adapter tests and both minimum-version compile contracts; report exact v17 adaptation required.
+- [x] Write focused adapter/converter/seed tests, including disabled providers, fail-fast, custom scoped providers, deduplication and cancellation.
+- [x] Implement automatic converter replacement while preserving custom converters, legacy ID/member UDI and 18 external fallback; Delivery API stays unsupported.
+- [x] Implement distributed refresher handlers and schema/model-factory/content/media model retirement.
+- [x] Implement startup seeding before readiness only in suitable installed runtime states, raw data only, no L0 warmup.
+- [x] Verify adapter tests and both minimum-version compile contracts; report exact v17 adaptation required.
 
 ## Task 3: Repository, official demo, metadata and release checks
 
 **Files:** root solution/metadata/icon, `demo/`, `docs/`, schema/buildTransitive, `.github/workflows/`, `scripts/verify-package.py`.
 
-- [ ] Generate official-template demo pinned 18.0.0 with SQLite, project reference and a reproducible example fixture.
-- [ ] Create SDK library and xUnit test projects, minimal dependency interval, root/NuGet/Marketplace documentation, approved brand assets and honest prototype screenshot captions.
-- [ ] Add configuration schema and Umbraco schema registration target, verify actual nupkg contents.
-- [ ] Add read-only CI and OIDC publication workflow with whole SemVer/tag/major/branch checks.
-- [ ] Build/test/pack and install built nupkg into a separate clean official-template site; boot and verify schema/composer plus ModelsBuilder/Block List behavior.
+- [x] Generate official-template demo pinned 18.0.0 with SQLite, project reference and a reproducible example fixture.
+- [x] Create SDK library and xUnit test projects, minimal dependency interval, root/NuGet/Marketplace documentation, approved brand assets and honest prototype screenshot captions.
+- [x] Add configuration schema and Umbraco schema registration target, verify actual nupkg contents.
+- [x] Add read-only CI and OIDC publication workflow with whole SemVer/tag/major/branch checks.
+- [x] Build/test/pack and install built nupkg into a separate clean official-template site; boot and verify schema/composer plus ModelsBuilder/Block List behavior.
 
 ## Task 4: Independent v17 branch, review and destination delivery
 
-- [ ] Review tasks 1 and 2 for spec compliance, public API compatibility, security and concurrency; fix substantive findings.
-- [ ] Sync the isolated implementation to the requested empty directory, initialize Git and commit the independently working main branch locally.
-- [ ] Create v17/main, adapt package interval/version/template and constructor differences without production cross-major conditionals, verify build/test/pack/clean install on 17.0.0.
-- [ ] Return checkout to main, retain v17/main locally, configure supplied repository URL without pushing.
-- [ ] Final review, record exact commands/results, package paths, version branches and unverified limitations in `docs/verification.md` and controller ledger.
+- [x] Review tasks 1 and 2 for spec compliance, public API compatibility, security and concurrency; fix substantive findings.
+- [x] Sync the isolated implementation to the requested empty directory, initialize Git and commit the independently working main branch locally.
+- [x] Create v17/main, adapt package interval/version/template and constructor differences without production cross-major conditionals, verify build/test/pack/clean install on 17.0.0.
+- [x] Return checkout to main, retain v17/main locally, configure supplied repository URL without pushing.
+- [x] Final review, record exact commands/results, package paths, version branches and unverified limitations in `docs/verification.md` and controller ledger.

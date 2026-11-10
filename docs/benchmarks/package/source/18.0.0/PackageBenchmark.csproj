@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <DefineConstants>$(DefineConstants);UMBRACO18</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" Version="0.15.8" />
+    <PackageReference Include="Umbraco.Cms" Version="18.0.0" />
+    <PackageReference Include="Umbraco.Cms.DevelopmentMode.Backoffice" Version="18.0.0" />
+    <PackageReference Include="Umbraco.Community.MemberCache" Version="18.0.0" />
+    <Compile Include="../Program.cs" />
+    <Compile Include="../PackagePickerBenchmarks.cs" />
+    <Compile Include="../CoreFixtureMemberPickerValueConverter.cs" />
+  </ItemGroup>
+</Project>

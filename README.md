@@ -53,6 +53,6 @@ The workflow was authored against the official [checkout](https://github.com/act
 
 ## Benchmarks and license
 
-Benchmark graphics under `docs/` belong to an older prototype. They do not measure this finished package; remeasure before making package performance claims. Umbraco 17.0.0's original picker baseline also predates the converter fix in 17.0.1.
+The [finished-package Member Picker benchmark](docs/benchmarks/package/README.md) uses real published documents and actual NuGet packages. On warm repeated reads, the measured time falls from 50.410 to 0.859 µs in CMS 17.0.1 and from 10.730 to 0.872 µs in 18.0.0. The 17.0.0 minimum-version result is an explicit counterexample: core's already cached value is faster. See the full reports for errors, allocations and limits; these are not page-load or production throughput claims. Earlier prototype graphics remain historical and are not used for current claims.
 
 [MIT](LICENSE), copyright 2026 skttl.

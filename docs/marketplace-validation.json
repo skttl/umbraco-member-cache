@@ -1,0 +1,19 @@
+{
+  "valid": true,
+  "schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json",
+  "images": [
+    {
+      "name": "picker-converter-results.png",
+      "bytes": 131425
+    },
+    {
+      "name": "member-picker-before-after.png",
+      "bytes": 90418
+    },
+    {
+      "name": "member-lookup-before-after.png",
+      "bytes": 100512
+    }
+  ],
+  "uploaded": false
+}

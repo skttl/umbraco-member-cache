@@ -9,5 +9,19 @@
   "IssueTrackerUrl": "https://github.com/skttl/umbraco-member-cache/issues",
   "AuthorDetails": { "Name": "skttl", "Url": "https://github.com/skttl" },
   "Tags": ["members", "cache", "performance"],
-  "VersionDependencyMode": "SemVer"
+  "VersionDependencyMode": "SemVer",
+  "Screenshots": [
+    {
+      "ImageUrl": "https://raw.githubusercontent.com/skttl/umbraco-member-cache/main/docs/screenshots/picker-converter-results.png",
+      "Caption": "Member Picker before and after, measured with the actual NuGet packages on published documents in Umbraco 17.0.1 and 18.0.0. Repeated warm reads of the same selected member value. These are local SQLite results, not page-rendering or production-throughput claims; the separate 17.0.0 result is in the full report."
+    },
+    {
+      "ImageUrl": "https://raw.githubusercontent.com/skttl/umbraco-member-cache/main/docs/screenshots/member-picker-before-after.png",
+      "Caption": "Install the package and keep existing Razor Member Picker reads. The automatically registered converter uses the shared member cache while preserving project-defined converters."
+    },
+    {
+      "ImageUrl": "https://raw.githubusercontent.com/skttl/umbraco-member-cache/main/docs/screenshots/member-lookup-before-after.png",
+      "Caption": "Direct lookups: inject IPublishedMemberLookup for asynchronous ID, username and batch reads. Batches preserve order and duplicates and omit missing members."
+    }
+  ]
 }

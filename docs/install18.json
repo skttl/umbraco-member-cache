@@ -1,0 +1,25 @@
+{
+  "Passed": 14,
+  "Failed": 0,
+  "Checks": [
+    "PublicLookupPreservesIdentity",
+    "LookupUsesGeneratedModelsBuilderModel",
+    "CachedRawValuesKeepStorageTypes",
+    "CachedBlockListUsesGeneratedElementModel",
+    "IdAndUsernameShareCanonicalModel",
+    "BatchOmitsMissingAndPreservesDuplicates",
+    "RealDocumentIsPublished",
+    "AutomaticPickerOnDocumentReturnsGeneratedMemberModel",
+    "AutomaticPickerReadsMemberProperty",
+    "MemberSaveInvalidatesLookup",
+    "AlreadyReadDocumentPickerSeesMemberSave",
+    "MemberRenameInvalidatesUsernameAliases",
+    "MemberDeleteInvalidatesBothLookups",
+    "AlreadyReadDocumentPickerSeesMemberDelete"
+  ],
+  "Cms": "18.0.0.0",
+  "MemberModel": "Umbraco.Cms.Web.Common.PublishedModels.MemberCacheDemoMember",
+  "BlockModel": "Umbraco.Cms.Web.Common.PublishedModels.MemberCacheDemoBlock",
+  "DocumentId": 1065,
+  "BadSeedStartupExitCode": -532462766
+}
