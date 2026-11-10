@@ -1,0 +1,5 @@
+<Project>
+  <ItemGroup>
+    <UmbracoJsonSchemaFiles Include="$(MSBuildThisFileDirectory)..\appsettings-schema.Umbraco.Community.MemberCache.json" Weight="-10" />
+  </ItemGroup>
+</Project>

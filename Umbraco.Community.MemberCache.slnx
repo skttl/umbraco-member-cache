@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/demo/">
+    <Project Path="demo/Umbraco.Community.MemberCache.TestSite/Umbraco.Community.MemberCache.TestSite.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Umbraco.Community.MemberCache/Umbraco.Community.MemberCache.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Umbraco.Community.MemberCache.Tests/Umbraco.Community.MemberCache.Tests.csproj" />
+  </Folder>
+</Solution>

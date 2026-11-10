@@ -1,0 +1,57 @@
+name: Publish NuGet
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: release
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: '10.0.x'
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+      - name: Check package verifier
+        run: python scripts/verify-package.py self-test
+      - name: Validate whole tag and remote branch ancestry
+        id: release
+        env:
+          RELEASE_TAG: "${{ github.ref_name }}"
+        run: python scripts/verify-package.py release "$RELEASE_TAG"
+      - run: dotnet restore Umbraco.Community.MemberCache.slnx
+      - name: Build tagged version
+        env:
+          PACKAGE_VERSION: "${{ steps.release.outputs.version }}"
+        run: dotnet build Umbraco.Community.MemberCache.slnx -c Release --no-restore -p:Version="$PACKAGE_VERSION"
+      - run: dotnet test tests/Umbraco.Community.MemberCache.Tests -c Release --no-build
+      - name: Pack tagged version
+        env:
+          PACKAGE_VERSION: "${{ steps.release.outputs.version }}"
+        run: dotnet pack src/Umbraco.Community.MemberCache -c Release --no-build -o artifacts -p:Version="$PACKAGE_VERSION"
+      - name: Inspect actual NuGet archive
+        env:
+          PACKAGE_VERSION: "${{ steps.release.outputs.version }}"
+        run: python scripts/verify-package.py package artifacts --version "$PACKAGE_VERSION"
+      - name: NuGet login with OIDC
+        id: login
+        uses: NuGet/login@v1
+        with:
+          user: "${{ secrets.NUGET_USER }}"
+      - name: Publish verified package
+        env:
+          NUGET_API_KEY: "${{ steps.login.outputs.NUGET_API_KEY }}"
+        run: dotnet nuget push artifacts/*.nupkg --source https://api.nuget.org/v3/index.json --api-key "$NUGET_API_KEY"

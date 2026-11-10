@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main, 'v17/main']
+  push:
+    branches: [main, 'v17/main']
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: '10.0.x'
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+      - name: Check package verifier
+        run: python scripts/verify-package.py self-test
+      - run: dotnet restore Umbraco.Community.MemberCache.slnx
+      - run: dotnet build Umbraco.Community.MemberCache.slnx -c Release --no-restore
+      - run: dotnet test tests/Umbraco.Community.MemberCache.Tests -c Release --no-build
+      - run: dotnet pack src/Umbraco.Community.MemberCache -c Release --no-build -o artifacts
+      - run: python scripts/verify-package.py package artifacts

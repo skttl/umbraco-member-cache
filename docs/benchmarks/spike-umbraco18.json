@@ -1,0 +1,21 @@
+{
+  "Umbraco": "18.0.0.0",
+  "MemberModel": "Spike.Generated.SpikeMember",
+  "BlockModel": "Spike.Generated.SpikeBlock",
+  "Passed": 11,
+  "Failed": 0,
+  "Checks": [
+    "SerializationCreatesIndependentMemberWithSameIdentity",
+    "RawPropertiesPreserveTypesValuesAndNull",
+    "DecimalRoundTripPreservesPrecision",
+    "DateAndNullRoundTrip",
+    "BlockJsonRoundTripIsExact",
+    "PublicMemberCacheRecreatesPublishedMemberAndAccountFields",
+    "ModelsBuilderGeneratesAndWrapsMemberModel",
+    "GeneratedMemberPropertyReturnsOriginalValue",
+    "GeneratedMemberPropertyConvertsBlockList",
+    "BlockContentUsesGeneratedModelAndPreservesValue",
+    "GeneratedModelExposesPublishedContentContract"
+  ],
+  "PayloadBytes": 1290
+}

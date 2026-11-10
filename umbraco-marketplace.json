@@ -1,0 +1,13 @@
+{
+  "$schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json",
+  "Title": "Member Cache",
+  "Description": "Published member lookups with a bounded local model cache, HybridCache snapshots and automatic Member Picker integration.",
+  "Category": "Developer Tools",
+  "PackageType": "Package",
+  "LicenseTypes": ["Free"],
+  "DocumentationUrl": "https://github.com/skttl/umbraco-member-cache/blob/main/docs/nuget-readme.md",
+  "IssueTrackerUrl": "https://github.com/skttl/umbraco-member-cache/issues",
+  "AuthorDetails": { "Name": "skttl", "Url": "https://github.com/skttl" },
+  "Tags": ["members", "cache", "performance"],
+  "VersionDependencyMode": "SemVer"
+}
